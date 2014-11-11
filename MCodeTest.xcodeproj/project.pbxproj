@@ -15,6 +15,19 @@
 		02116AB61A115A6300DA46D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02116AB51A115A6300DA46D7 /* Images.xcassets */; };
 		02116AB91A115A6300DA46D7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02116AB71A115A6300DA46D7 /* LaunchScreen.xib */; };
 		02116AC51A115A6400DA46D7 /* MCodeTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 02116AC41A115A6400DA46D7 /* MCodeTestTests.m */; };
+		02116AD11A115DEC00DA46D7 /* MCAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = 02116AD01A115DEC00DA46D7 /* MCAlbum.m */; };
+		02116AD71A11601000DA46D7 /* MCTrackCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 02116AD61A11601000DA46D7 /* MCTrackCell.m */; };
+		02116AD91A11602700DA46D7 /* MCTrackCell~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02116AD81A11602700DA46D7 /* MCTrackCell~iphone.xib */; };
+		02116AE61A11628200DA46D7 /* MCContentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 02116AE51A11628200DA46D7 /* MCContentHandler.m */; };
+		02116AEA1A11666800DA46D7 /* MCStorageHandlerFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 02116AE91A11666800DA46D7 /* MCStorageHandlerFile.m */; };
+		02116AF71A1178D500DA46D7 /* MCDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 02116AF61A1178D500DA46D7 /* MCDetailView.m */; };
+		02116AF91A1178E400DA46D7 /* MCDetailView~iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02116AF81A1178E400DA46D7 /* MCDetailView~iphone.xib */; };
+		02116B0A1A11E0A000DA46D7 /* icon-60@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B081A11E0A000DA46D7 /* icon-60@2x~iphone.png */; };
+		02116B0E1A11E1F900DA46D7 /* Default~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B0C1A11E1F900DA46D7 /* Default~iphone.png */; };
+		02116B0F1A11E1F900DA46D7 /* Default@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B0D1A11E1F900DA46D7 /* Default@2x~iphone.png */; };
+		02116B121A11E2B100DA46D7 /* icon-87~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B101A11E2B100DA46D7 /* icon-87~iphone.png */; };
+		02116B151A11E33500DA46D7 /* icon-58~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B141A11E33500DA46D7 /* icon-58~iphone.png */; };
+		02116B171A11E38900DA46D7 /* icon-90@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B161A11E38900DA46D7 /* icon-90@2x~iphone.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +55,26 @@
 		02116ABE1A115A6400DA46D7 /* MCodeTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MCodeTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		02116AC31A115A6400DA46D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02116AC41A115A6400DA46D7 /* MCodeTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MCodeTestTests.m; sourceTree = "<group>"; };
+		02116ACF1A115DEC00DA46D7 /* MCAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCAlbum.h; path = Models/MCAlbum.h; sourceTree = "<group>"; };
+		02116AD01A115DEC00DA46D7 /* MCAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCAlbum.m; path = Models/MCAlbum.m; sourceTree = "<group>"; };
+		02116AD51A11601000DA46D7 /* MCTrackCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCTrackCell.h; path = Views/MCTrackCell.h; sourceTree = "<group>"; };
+		02116AD61A11601000DA46D7 /* MCTrackCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCTrackCell.m; path = Views/MCTrackCell.m; sourceTree = "<group>"; };
+		02116AD81A11602700DA46D7 /* MCTrackCell~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "MCTrackCell~iphone.xib"; path = "Views/MCTrackCell~iphone.xib"; sourceTree = "<group>"; };
+		02116ADC1A1161A700DA46D7 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		02116AE41A11628200DA46D7 /* MCContentHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCContentHandler.h; sourceTree = "<group>"; };
+		02116AE51A11628200DA46D7 /* MCContentHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCContentHandler.m; sourceTree = "<group>"; };
+		02116AE71A1165E900DA46D7 /* MCIStorageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCIStorageHandler.h; path = Contracts/Interfaces/MCIStorageHandler.h; sourceTree = "<group>"; };
+		02116AE81A11666800DA46D7 /* MCStorageHandlerFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCStorageHandlerFile.h; sourceTree = "<group>"; };
+		02116AE91A11666800DA46D7 /* MCStorageHandlerFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCStorageHandlerFile.m; sourceTree = "<group>"; };
+		02116AF51A1178D500DA46D7 /* MCDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MCDetailView.h; path = Views/MCDetailView.h; sourceTree = "<group>"; };
+		02116AF61A1178D500DA46D7 /* MCDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MCDetailView.m; path = Views/MCDetailView.m; sourceTree = "<group>"; };
+		02116AF81A1178E400DA46D7 /* MCDetailView~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "MCDetailView~iphone.xib"; path = "Views/MCDetailView~iphone.xib"; sourceTree = "<group>"; };
+		02116B081A11E0A000DA46D7 /* icon-60@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-60@2x~iphone.png"; sourceTree = "<group>"; };
+		02116B0C1A11E1F900DA46D7 /* Default~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default~iphone.png"; sourceTree = "<group>"; };
+		02116B0D1A11E1F900DA46D7 /* Default@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x~iphone.png"; sourceTree = "<group>"; };
+		02116B101A11E2B100DA46D7 /* icon-87~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-87~iphone.png"; sourceTree = "<group>"; };
+		02116B141A11E33500DA46D7 /* icon-58~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-58~iphone.png"; sourceTree = "<group>"; };
+		02116B161A11E38900DA46D7 /* icon-90@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-90@2x~iphone.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,15 +116,17 @@
 		02116AA41A115A6300DA46D7 /* MCodeTest */ = {
 			isa = PBXGroup;
 			children = (
-				02116AA91A115A6300DA46D7 /* AppDelegate.h */,
-				02116AAA1A115A6300DA46D7 /* AppDelegate.m */,
-				02116AAF1A115A6300DA46D7 /* ViewController.h */,
-				02116AB01A115A6300DA46D7 /* ViewController.m */,
-				02116AB21A115A6300DA46D7 /* Main.storyboard */,
+				02116AD21A115F4900DA46D7 /* Application */,
+				02116ADB1A1161A700DA46D7 /* Config */,
+				02116ADF1A11622100DA46D7 /* Contracts */,
+				02116AD31A115F5700DA46D7 /* Controllers */,
+				02116AE31A11628200DA46D7 /* Handlers */,
 				02116AB51A115A6300DA46D7 /* Images.xcassets */,
-				02116AB71A115A6300DA46D7 /* LaunchScreen.xib */,
 				02116AAC1A115A6300DA46D7 /* MCodeTest.xcdatamodeld */,
-				02116AA51A115A6300DA46D7 /* Supporting Files */,
+				02116ACE1A115DC000DA46D7 /* Models */,
+				02116B061A11E0A000DA46D7 /* Resources */,
+				02116AE21A11623700DA46D7 /* Services */,
+				02116AD41A115FE900DA46D7 /* Views */,
 			);
 			path = MCodeTest;
 			sourceTree = "<group>";
@@ -120,6 +155,152 @@
 				02116AC31A115A6400DA46D7 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		02116ACE1A115DC000DA46D7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				02116ACF1A115DEC00DA46D7 /* MCAlbum.h */,
+				02116AD01A115DEC00DA46D7 /* MCAlbum.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		02116AD21A115F4900DA46D7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				02116AA51A115A6300DA46D7 /* Supporting Files */,
+				02116AA91A115A6300DA46D7 /* AppDelegate.h */,
+				02116AAA1A115A6300DA46D7 /* AppDelegate.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		02116AD31A115F5700DA46D7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				02116AEB1A1170D400DA46D7 /* Mainpage */,
+				02116AED1A1170E800DA46D7 /* Splashscreen */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		02116AD41A115FE900DA46D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02116AF41A1178C000DA46D7 /* Detail */,
+				02116AF31A1178B600DA46D7 /* Cell */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		02116ADB1A1161A700DA46D7 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				02116ADC1A1161A700DA46D7 /* Constants.h */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		02116ADF1A11622100DA46D7 /* Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				02116AE11A11623000DA46D7 /* Delegates */,
+				02116AE01A11622A00DA46D7 /* Interfaces */,
+			);
+			name = Contracts;
+			sourceTree = "<group>";
+		};
+		02116AE01A11622A00DA46D7 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				02116AE71A1165E900DA46D7 /* MCIStorageHandler.h */,
+			);
+			name = Interfaces;
+			sourceTree = "<group>";
+		};
+		02116AE11A11623000DA46D7 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		02116AE21A11623700DA46D7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		02116AE31A11628200DA46D7 /* Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				02116AE41A11628200DA46D7 /* MCContentHandler.h */,
+				02116AE51A11628200DA46D7 /* MCContentHandler.m */,
+				02116AE81A11666800DA46D7 /* MCStorageHandlerFile.h */,
+				02116AE91A11666800DA46D7 /* MCStorageHandlerFile.m */,
+			);
+			path = Handlers;
+			sourceTree = "<group>";
+		};
+		02116AEB1A1170D400DA46D7 /* Mainpage */ = {
+			isa = PBXGroup;
+			children = (
+				02116AAF1A115A6300DA46D7 /* ViewController.h */,
+				02116AB01A115A6300DA46D7 /* ViewController.m */,
+				02116AB21A115A6300DA46D7 /* Main.storyboard */,
+			);
+			name = Mainpage;
+			sourceTree = "<group>";
+		};
+		02116AED1A1170E800DA46D7 /* Splashscreen */ = {
+			isa = PBXGroup;
+			children = (
+				02116AB71A115A6300DA46D7 /* LaunchScreen.xib */,
+			);
+			name = Splashscreen;
+			sourceTree = "<group>";
+		};
+		02116AF31A1178B600DA46D7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				02116AD51A11601000DA46D7 /* MCTrackCell.h */,
+				02116AD61A11601000DA46D7 /* MCTrackCell.m */,
+				02116AD81A11602700DA46D7 /* MCTrackCell~iphone.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		02116AF41A1178C000DA46D7 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				02116AF51A1178D500DA46D7 /* MCDetailView.h */,
+				02116AF61A1178D500DA46D7 /* MCDetailView.m */,
+				02116AF81A1178E400DA46D7 /* MCDetailView~iphone.xib */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		02116B061A11E0A000DA46D7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				02116B0C1A11E1F900DA46D7 /* Default~iphone.png */,
+				02116B0D1A11E1F900DA46D7 /* Default@2x~iphone.png */,
+				02116B071A11E0A000DA46D7 /* Icons */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		02116B071A11E0A000DA46D7 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				02116B141A11E33500DA46D7 /* icon-58~iphone.png */,
+				02116B081A11E0A000DA46D7 /* icon-60@2x~iphone.png */,
+				02116B101A11E2B100DA46D7 /* icon-87~iphone.png */,
+				02116B161A11E38900DA46D7 /* icon-90@2x~iphone.png */,
+			);
+			path = Icons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,6 +347,7 @@
 		02116A9A1A115A6300DA46D7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = MC;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Legion Services Ltd.";
 				TargetAttributes = {
@@ -202,7 +384,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02116B0F1A11E1F900DA46D7 /* Default@2x~iphone.png in Resources */,
+				02116AF91A1178E400DA46D7 /* MCDetailView~iphone.xib in Resources */,
+				02116B0A1A11E0A000DA46D7 /* icon-60@2x~iphone.png in Resources */,
+				02116B0E1A11E1F900DA46D7 /* Default~iphone.png in Resources */,
 				02116AB41A115A6300DA46D7 /* Main.storyboard in Resources */,
+				02116AD91A11602700DA46D7 /* MCTrackCell~iphone.xib in Resources */,
+				02116B171A11E38900DA46D7 /* icon-90@2x~iphone.png in Resources */,
+				02116B121A11E2B100DA46D7 /* icon-87~iphone.png in Resources */,
+				02116B151A11E33500DA46D7 /* icon-58~iphone.png in Resources */,
 				02116AB91A115A6300DA46D7 /* LaunchScreen.xib in Resources */,
 				02116AB61A115A6300DA46D7 /* Images.xcassets in Resources */,
 			);
@@ -222,10 +412,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02116AEA1A11666800DA46D7 /* MCStorageHandlerFile.m in Sources */,
 				02116AAB1A115A6300DA46D7 /* AppDelegate.m in Sources */,
 				02116AAE1A115A6300DA46D7 /* MCodeTest.xcdatamodeld in Sources */,
 				02116AB11A115A6300DA46D7 /* ViewController.m in Sources */,
+				02116AD11A115DEC00DA46D7 /* MCAlbum.m in Sources */,
 				02116AA81A115A6300DA46D7 /* main.m in Sources */,
+				02116AF71A1178D500DA46D7 /* MCDetailView.m in Sources */,
+				02116AE61A11628200DA46D7 /* MCContentHandler.m in Sources */,
+				02116AD71A11601000DA46D7 /* MCTrackCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +547,7 @@
 				INFOPLIST_FILE = MCodeTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -362,6 +558,7 @@
 				INFOPLIST_FILE = MCodeTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
