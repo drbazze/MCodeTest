@@ -175,18 +175,19 @@
 {
   MCAlbum *album = [_albumsCollection objectAtIndex:indexPath.row];
   
-  float _Height = [self calculateCellHeight:album.artistName];
+  float height = [self calculateCellHeight:album.artistName];
   
-  if(IS_IPAD && _Height < 200)
+  //TODO iPad version
+  if(IS_IPAD && height < 200)
   {
-    _Height = 200;
+    height = 200;
   }
-  else if(!IS_IPAD && _Height < 50)
+  else if(!IS_IPAD && height < 50)
   {
-    _Height = 50;
+    height = 50;
   }
   
-  return _Height;
+  return height;
 }
 
 //------------------------------------------------//

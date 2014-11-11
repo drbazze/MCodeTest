@@ -1,8 +1,8 @@
 //
-//  ContentHandler.m
-//  TestUnitTesting
+//  MCContentHandler.m
+//  MCodeTest
 //
-//  Created by Zumpf Tamás on 2014.08.03..
+//  Created by Zumpf Tamás on 2014. 11. 10..
 //  Copyright (c) 2014 Legion Services Ltd. All rights reserved.
 //
 
@@ -32,7 +32,6 @@ const int kTimeOut = 15;
 //------------------------------------------------//
 
 @implementation MCContentHandler
-@synthesize BindUseDataFromStorage;
 
 //------------------------------------------------//
 
@@ -60,11 +59,16 @@ const int kTimeOut = 15;
     
     self.Operations = [[NSMutableDictionary alloc] init];
     
-    self.BindUseDataFromStorage = NO;
-
-    [self addObserver:self forKeyPath:@"BindUseDataFromStorage" options:NSKeyValueObservingOptionNew context:nil];
+    [self initNotification];
   }
   return self;
+}
+
+//------------------------------------------------//
+
+- (void)initNotification
+{
+  [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showAboutPopup) name:UIApplicationWillEnterForegroundNotification object:[UIApplication sharedApplication]];
 }
 
 //------------------------------------------------//
@@ -75,7 +79,7 @@ const int kTimeOut = 15;
   
   phrase = [phrase stringByReplacingOccurrencesOfString:@" " withString:@"+"];
   NSString *urlString = [NSString stringWithFormat:@"%@%@",kSearchUrl,phrase.lowercaseString];
-  NSLog(@"urlString %@",urlString);
+
   NSURL *url = [NSURL URLWithString:urlString];
   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                          cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
@@ -256,6 +260,7 @@ const int kTimeOut = 15;
 {
   UIAlertView *_Alert = [[UIAlertView alloc] initWithTitle:@"About" message:@"If you like my work, don't hesitate to contact with me" delegate:self cancelButtonTitle:@"No Thanks" otherButtonTitles:@"Hell Yeah", nil];
   _Alert.tag = 1;
+  _Alert.delegate = self;
   
   [_Alert show];
 }
@@ -266,33 +271,7 @@ const int kTimeOut = 15;
 {
   if(buttonIndex == 1)
   {
-    if(alertView.tag == 1)
-    {
-      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kMyLikedInUrl]];
-    }
-    else if(alertView.tag == 2)
-    {
-      self.BindUseDataFromStorage = YES;
-    }
-  }
-  else
-  {
-    if(alertView.tag == 2 || alertView.tag == 3)
-    {
-      
-    }
-  }
-}
-
-//------------------------------------------------//
-#pragma mark - Observers -
-//------------------------------------------------//
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-  if(object == self && [keyPath isEqualToString:@"BindUseDataFromStorage"])
-  {
-
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kMyLikedInUrl]];
   }
 }
 
@@ -300,7 +279,7 @@ const int kTimeOut = 15;
 
 - (void)dealloc
 {
-  [self removeObserver:self forKeyPath:@"BindUseDataFromStorage"];
+
 }
 
 //------------------------------------------------//

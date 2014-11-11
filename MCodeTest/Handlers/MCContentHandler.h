@@ -1,8 +1,8 @@
 //
-//  ContentHandler.h
-//  TestUnitTesting
+//  MCContentHandler.h
+//  MCodeTest
 //
-//  Created by Zumpf Tamás on 2014.08.03..
+//  Created by Zumpf Tamás on 2014. 11. 10..
 //  Copyright (c) 2014 Legion Services Ltd. All rights reserved.
 //
 
@@ -25,8 +25,6 @@ typedef NS_ENUM(NSInteger,AnimationTypes)
 typedef void(^SearchResultBlock)(ResponseTypes ResponseType, NSArray *TracksCollection);
 
 @interface MCContentHandler : NSObject <NSURLConnectionDelegate,UIAlertViewDelegate>
-
-@property(nonatomic,assign) BOOL BindUseDataFromStorage;
 
 + (id)sharedClass;
 
