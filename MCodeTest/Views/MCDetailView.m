@@ -44,6 +44,8 @@
   [self alignButtons];
 }
 
+//------------------------------------------------//
+
 - (void)addTrack:(MCAlbum *)track
 {
   self.track = track;
@@ -116,8 +118,6 @@
   [_player pause];
   
   self.bindClose = YES;
-  
-  thumbnail.image = nil;
 }
 
 //------------------------------------------------//

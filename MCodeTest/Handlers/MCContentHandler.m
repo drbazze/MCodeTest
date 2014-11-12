@@ -52,7 +52,7 @@ const int kTimeOut = 15;
 {
   if(self = [super init])
   {
-    _storageHandler = [MCStorageHandlerFile sharedClass];
+    _storageHandler = [[MCStorageHandlerFile alloc] init];
     _ImageDownloadQueue = [[NSOperationQueue alloc] init];
     _ImageDownloadQueue.maxConcurrentOperationCount = 5;
     

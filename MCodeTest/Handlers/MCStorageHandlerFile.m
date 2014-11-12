@@ -13,16 +13,15 @@
 
 //------------------------------------------------//
 
-+(id)sharedClass
+- (id)init
 {
-  static MCStorageHandlerFile *sharedStorageHandler = nil;
-  static dispatch_once_t onceToken;
+  self = [super init];
+  if (self)
+  {
+    
+  }
   
-  dispatch_once(&onceToken, ^{
-    sharedStorageHandler = [[self alloc] init];
-  });
-  
-  return sharedStorageHandler;
+  return self;
 }
 
 //------------------------------------------------//

@@ -12,21 +12,6 @@
 
 //------------------------------------------------//
 
-typedef NS_ENUM(NSInteger,ResponseTypes)
-{
-  ResponseFailed,
-  ResponseRetry,
-  ResponseSuccess
-};
-
-typedef NS_ENUM(NSInteger,AnimationTypes)
-{
-  AnimationBounce,
-  AnimationFade
-};
-
-//------------------------------------------------//
-
 typedef void(^SearchResultBlock)(ResponseTypes ResponseType, NSArray *TracksCollection);
 
 //------------------------------------------------//

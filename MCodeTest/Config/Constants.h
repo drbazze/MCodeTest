@@ -6,6 +6,8 @@
 //  Copyright (c) 2014. Legion Services Ltd. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
+
 #define kStoragePersons @"Persons"
 #define kiTunesDateFormat @"yyyy-MM-dd'T'HH:mm:ssZ"
 
@@ -15,3 +17,18 @@
 #else
 #define IS_IPAD (false)
 #endif
+
+typedef NS_ENUM(NSInteger,ResponseTypes)
+{
+  ResponseFailed,
+  ResponseRetry,
+  ResponseSuccess
+};
+
+typedef NS_ENUM(NSInteger,AnimationTypes)
+{
+  AnimationBounce,
+  AnimationFade,
+  AnimationFlip,
+  AnimationSize
+};

@@ -11,7 +11,7 @@
 @protocol MCIStorageHandler <NSObject>
 
 @required
-+ (id)sharedClass;
+
 - (NSData *)retrieveImageFromStore:(NSString *)url;
 - (void)saveImageToStore:(NSString *)url Data:(NSData *)data;
 

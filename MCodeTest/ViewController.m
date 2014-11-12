@@ -17,6 +17,7 @@
 
 static int minSearchPhraseLength = 3;
 static NSString *latestSearchPhrase = @"";
+static AnimationTypes defaultAnimation = AnimationSize;
 
 //------------------------------------------------//
 
@@ -107,7 +108,25 @@ static NSString *latestSearchPhrase = @"";
 
 //------------------------------------------------//
 
-- (void)showDetail:(MCAlbum *)track show:(BOOL)show
+- (void)showDetail:(MCAlbum *)track show:(BOOL)show animation:(AnimationTypes)animation
+{
+  if(animation == AnimationFlip)
+  {
+    [self showDetailFlipAnimation:track show:show];
+  }
+  else if(animation == AnimationSize)
+  {
+    [self showDetailSizeAnimation:track show:show];
+  }
+  else
+  {
+    [self showDetailSizeAnimation:track show:show];
+  }
+}
+
+//------------------------------------------------//
+
+- (void)showDetailFlipAnimation:(MCAlbum *)track show:(BOOL)show
 {
   [UIView transitionWithView:self.view
                     duration:0.3
@@ -134,6 +153,46 @@ static NSString *latestSearchPhrase = @"";
                       _detailContentView = nil;
                     }
                   }];
+}
+
+//------------------------------------------------//
+
+- (void)showDetailSizeAnimation:(MCAlbum *)track show:(BOOL)show
+{
+  float size = 1.0;
+  float alpha = 1.0;
+  
+  if(!show)
+  {
+    size = 0.1;
+    alpha = 1.0;
+  }
+  else
+  {
+    NSArray *_xibs = [[NSBundle mainBundle] loadNibNamed:@"MCDetailView" owner:self options:nil];
+    _detailContentView = (MCDetailView *)[_xibs objectAtIndex:0];
+    _detailContentView.frame = CGRectMake(0,0,detailView.bounds.size.width,detailView.bounds.size.height);
+    
+    [self.view addSubview:_detailContentView];
+    [_detailContentView addTrack:track];
+    
+    _detailContentView.alpha = 0.0;
+    _detailContentView.transform = CGAffineTransformScale(CGAffineTransformIdentity, 0.0, 0.0);
+    
+    [_detailContentView addObserver:self forKeyPath:@"bindClose" options:NSKeyValueObservingOptionNew context:nil];
+  }
+  
+  [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+    _detailContentView.transform = CGAffineTransformScale(CGAffineTransformIdentity, size, size);
+    _detailContentView.alpha = alpha;
+  } completion:^(BOOL finished) {
+    if(!show)
+    {
+      [_detailContentView removeObserver:self forKeyPath:@"bindClose"];
+      [_detailContentView removeFromSuperview];
+      _detailContentView = nil;
+    }
+  }];
 }
 
 //------------------------------------------------//
@@ -226,7 +285,7 @@ static NSString *latestSearchPhrase = @"";
 {
   MCAlbum *album = [_albumsCollection objectAtIndex:indexPath.row];
   
-  [self showDetail:album show:YES];
+  [self showDetail:album show:YES animation:defaultAnimation];
 }
 
 //------------------------------------------------//
@@ -269,9 +328,9 @@ static NSString *latestSearchPhrase = @"";
 
 //------------------------------------------------//
 
-- (float)calculateCellHeight :(NSString *) _String
+- (float)calculateCellHeight :(NSString *)string
 {
-  CGRect textRect = [_String boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
+  CGRect textRect = [string boundingRectWithSize:CGSizeMake(260.0f, MAXFLOAT)
                                           options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{NSFontAttributeName:[UIFont fontWithName:@"Helvetica Neue" size:14.0]}
                                           context:nil];
@@ -283,17 +342,17 @@ static NSString *latestSearchPhrase = @"";
 #pragma mark - Other -
 //------------------------------------------------//
 
-- (void)showLoader:(BOOL) _State
+- (void)showLoader:(BOOL)state
 {
-  float _alpha = 1.0;
+  float alpha = 1.0;
   
-  if(!_State)
+  if(!state)
   {
-    _alpha = 0.0;
+    alpha = 0.0;
   }
   
   [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-    loader.alpha = _alpha;
+    loader.alpha = alpha;
   } completion:^(BOOL finished) {
     
   }];
@@ -381,7 +440,7 @@ static NSString *latestSearchPhrase = @"";
   {
     if(_detailContentView.bindClose)
     {
-      [self showDetail:nil show:NO];
+      [self showDetail:nil show:NO animation:defaultAnimation];
     }
   }
 }
