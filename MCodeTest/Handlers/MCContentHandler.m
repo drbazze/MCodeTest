@@ -14,7 +14,6 @@
 
 static NSString *kSearchUrl = @"http://itunes.apple.com/search?term=";
 static NSString *kMyLikedInUrl = @"http://hu.linkedin.com/in/zumpf";
-const int maxCount = 20;
 const int kTimeOut = 15;
 
 //------------------------------------------------//
@@ -106,11 +105,7 @@ const int kTimeOut = 15;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-  UIAlertView *_Alert = [[UIAlertView alloc] initWithTitle:@"Information" message:@"The connection is failed to the server. You have not downloaded any informations yet. Please retry the download." delegate:self cancelButtonTitle:@"Retry download" otherButtonTitles:@"Retry", nil];
-  _Alert.tag = 2;
-  [_Alert show];
-  
-  _RetrievePersonsResultBlock(ResponseFailed,nil);
+  _RetrievePersonsResultBlock(ResponseRetry,nil);
 }
 
 //------------------------------------------------//
@@ -120,13 +115,12 @@ const int kTimeOut = 15;
   NSError *error = nil;
   NSDictionary *result = [NSJSONSerialization JSONObjectWithData:_responseData options:NSJSONReadingMutableContainers error: &error];
   
-  if(!result || [[result objectForKey:@"resultCount"] intValue] == 0)
+  if(!result)
   {
-    //TODO show specific error
-    UIAlertView *_Alert = [[UIAlertView alloc] initWithTitle:@"Information" message:@"There is no result for the search phrase." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-    _Alert.tag = 1;
-    [_Alert show];
-    
+    _RetrievePersonsResultBlock(ResponseRetry,nil);
+  }
+  else if([[result objectForKey:@"resultCount"] intValue] == 0)
+  {
     _RetrievePersonsResultBlock(ResponseFailed,nil);
   }
   else
@@ -202,11 +196,13 @@ const int kTimeOut = 15;
   float _max = 1.3;
   float _min = 0.8;
   
+  /* @TODO iPad version
   if(IS_IPAD)
   {
     _max = 1.1;
     _min = 0.9;
   }
+   */
   
   [UIView animateWithDuration:0.3/1.5 animations:^{
     
@@ -243,14 +239,14 @@ const int kTimeOut = 15;
 
 //------------------------------------------------//
 
-- (void)cancelRetrieveImage:(NSString *) _Url
+- (void)cancelRetrieveImage:(NSString *)url
 {
-  NSOperation *_Operation = [_Operations objectForKey:_Url];
+  NSOperation *operation = [_Operations objectForKey:url];
   
-  if(_Operation)
+  if(operation)
   {
-    [_Operation cancel];
-    [_Operations removeObjectForKey:_Url];
+    [operation cancel];
+    [_Operations removeObjectForKey:url];
   }
 }
 
@@ -258,18 +254,18 @@ const int kTimeOut = 15;
 
 - (void)showAboutPopup
 {
-  UIAlertView *_Alert = [[UIAlertView alloc] initWithTitle:@"About" message:@"If you like my work, don't hesitate to contact with me" delegate:self cancelButtonTitle:@"No Thanks" otherButtonTitles:@"Hell Yeah", nil];
-  _Alert.tag = 1;
-  _Alert.delegate = self;
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"About" message:@"If you like my work, don't hesitate to contact with me" delegate:self cancelButtonTitle:@"No Thanks" otherButtonTitles:@"Hell Yeah", nil];
+  alert.tag = 1;
+  alert.delegate = self;
   
-  [_Alert show];
+  [alert show];
 }
 
 //------------------------------------------------//
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-  if(buttonIndex == 1)
+  if(alertView.tag == 1 && buttonIndex == 1)
   {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:kMyLikedInUrl]];
   }

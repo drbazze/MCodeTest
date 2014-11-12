@@ -10,9 +10,12 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+//------------------------------------------------//
+
 typedef NS_ENUM(NSInteger,ResponseTypes)
 {
   ResponseFailed,
+  ResponseRetry,
   ResponseSuccess
 };
 
@@ -22,9 +25,15 @@ typedef NS_ENUM(NSInteger,AnimationTypes)
   AnimationFade
 };
 
+//------------------------------------------------//
+
 typedef void(^SearchResultBlock)(ResponseTypes ResponseType, NSArray *TracksCollection);
 
+//------------------------------------------------//
+
 @interface MCContentHandler : NSObject <NSURLConnectionDelegate,UIAlertViewDelegate>
+
+@property(nonatomic,assign) BOOL bindRetry;
 
 + (id)sharedClass;
 
@@ -32,5 +41,7 @@ typedef void(^SearchResultBlock)(ResponseTypes ResponseType, NSArray *TracksColl
 - (void)retrieveImage:(NSString *)url ImageView:(UIImageView *)imageView animation:(AnimationTypes)animation;
 - (void)cancelRetrieveImage:(NSString *) _Url;
 - (void)showAboutPopup;
+
+//------------------------------------------------//
 
 @end

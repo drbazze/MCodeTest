@@ -15,9 +15,12 @@
 #import "MCTrackCell.h"
 #import "MCAlbum.h"
 
+static int minSearchPhraseLength = 3;
+static NSString *latestSearchPhrase = @"";
+
 //------------------------------------------------//
 
-@interface ViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ViewController ()<UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
 @property(nonatomic,strong) NSArray *albumsCollection;
 @property(nonatomic,strong) MCDetailView *detailContentView;
@@ -40,24 +43,53 @@
 
 //------------------------------------------------//
 
+- (void)setAutoFocus
+{
+  UISearchBar *searchBar = [self findSearchBar:self.view];
+  
+  if(searchBar)
+  {
+    [searchBar becomeFirstResponder];
+  }
+}
+
+//------------------------------------------------//
+
 - (void)retrieveSearchResults:(NSString *)phrase
 {
-  /* If we want clear the results */
+  /* If we want to clear the results */
   //[self clearResults];
   
-  [contentTable setContentOffset:CGPointZero animated:YES];
-  [self showLoader:YES];
-  
-  [[MCContentHandler sharedClass] retrieveSearchResults:phrase resultBlock:^(ResponseTypes ResponseType, NSArray *TracksCollection) {
-    if(ResponseType == ResponseSuccess)
-    {
-      self.albumsCollection = TracksCollection;
-      
-      [contentTable reloadData];
-    }
+  if(phrase.length >= minSearchPhraseLength)
+  {
+    latestSearchPhrase = phrase;
     
-    [self showLoader:NO];
-  }];
+    [contentTable setContentOffset:CGPointZero animated:YES];
+    [self showLoader:YES];
+    
+    [[MCContentHandler sharedClass] retrieveSearchResults:phrase resultBlock:^(ResponseTypes ResponseType, NSArray *TracksCollection) {
+      if(ResponseType == ResponseSuccess)
+      {
+        self.albumsCollection = TracksCollection;
+        
+        [contentTable reloadData];
+      }
+      else if(ResponseType == ResponseRetry)
+      {
+        [self showRetryAlert];
+      }
+      else if(ResponseType == ResponseFailed)
+      {
+        [self showAlert:@"Information" message:[NSString stringWithFormat:@"There is no result for \"%@\" search phrase.",latestSearchPhrase]];
+      }
+      
+      [self showLoader:NO];
+    }];
+  }
+  else
+  {
+    [self showAlert:@"Error" message:[NSString stringWithFormat:@"Minimum search phrase length is %d",minSearchPhraseLength]];
+  }
 }
 
 //------------------------------------------------//
@@ -102,6 +134,34 @@
                       _detailContentView = nil;
                     }
                   }];
+}
+
+//------------------------------------------------//
+
+- (void)showAlert:(NSString *)title message:(NSString *)message
+{
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:message delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+  [alert show];
+}
+
+//------------------------------------------------//
+
+- (void)showRetryAlert
+{
+  UIAlertView *_Alert = [[UIAlertView alloc] initWithTitle:@"Information" message:@"Cannot dowload the information from the server. Please try again" delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:@"Cancel",nil];
+  _Alert.tag = 1;
+  [_Alert show];
+}
+
+//------------------------------------------------//
+
+- (void)showAboutPopup
+{
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"About" message:@"If you like my work, don't hesitate to contact with me" delegate:self cancelButtonTitle:@"No Thanks" otherButtonTitles:@"Hell Yeah", nil];
+  alert.tag = 2;
+  alert.delegate = self;
+  
+  [alert show];
 }
 
 //------------------------------------------------//
@@ -177,12 +237,17 @@
   
   float height = [self calculateCellHeight:album.artistName];
   
-  //TODO iPad version
+  /*TODO iPad version
   if(IS_IPAD && height < 200)
   {
     height = 200;
   }
   else if(!IS_IPAD && height < 50)
+  {
+    height = 50;
+  }*/
+  
+  if(height < 50)
   {
     height = 50;
   }
@@ -235,6 +300,29 @@
 }
 
 //------------------------------------------------//
+
+- (UISearchBar *)findSearchBar:(UIView *)view
+{
+  id result = nil;
+  
+  for(UIView *innerView in view.subviews)
+  {
+    if([innerView isKindOfClass:[UISearchBar class]])
+    {
+      result = innerView;
+      break;
+    }
+    else if(innerView.subviews.count > 0)
+    {
+      result = [self findSearchBar:innerView];
+      break;
+    }
+  }
+  
+  return result;
+}
+
+//------------------------------------------------//
 #pragma mark - Keyboard -
 //------------------------------------------------//
 
@@ -274,6 +362,16 @@
 }
 
 //------------------------------------------------//
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+  if(alertView.tag == 1 && buttonIndex != alertView.cancelButtonIndex)
+  {
+    [self retrieveSearchResults:latestSearchPhrase];
+  }
+}
+
+//------------------------------------------------//
 #pragma mark - Observers -
 //------------------------------------------------//
 
@@ -295,6 +393,7 @@
   [super viewDidLoad];
   
   [self start];
+  [self setAutoFocus];
 }
 
 //------------------------------------------------//
@@ -310,5 +409,7 @@
 {
   [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
+//------------------------------------------------//
 
 @end

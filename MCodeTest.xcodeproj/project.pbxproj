@@ -28,6 +28,7 @@
 		02116B121A11E2B100DA46D7 /* icon-87~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B101A11E2B100DA46D7 /* icon-87~iphone.png */; };
 		02116B151A11E33500DA46D7 /* icon-58~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B141A11E33500DA46D7 /* icon-58~iphone.png */; };
 		02116B171A11E38900DA46D7 /* icon-90@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B161A11E38900DA46D7 /* icon-90@2x~iphone.png */; };
+		02116B1E1A140A2400DA46D7 /* NSString+MCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 02116B1D1A140A2400DA46D7 /* NSString+MCExtension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		02116B101A11E2B100DA46D7 /* icon-87~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-87~iphone.png"; sourceTree = "<group>"; };
 		02116B141A11E33500DA46D7 /* icon-58~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-58~iphone.png"; sourceTree = "<group>"; };
 		02116B161A11E38900DA46D7 /* icon-90@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-90@2x~iphone.png"; sourceTree = "<group>"; };
+		02116B1C1A140A2400DA46D7 /* NSString+MCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MCExtension.h"; path = "Categories/NSString+MCExtension.h"; sourceTree = "<group>"; };
+		02116B1D1A140A2400DA46D7 /* NSString+MCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MCExtension.m"; path = "Categories/NSString+MCExtension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				02116AD21A115F4900DA46D7 /* Application */,
+				02116B181A1409AB00DA46D7 /* Categories */,
 				02116ADB1A1161A700DA46D7 /* Config */,
 				02116ADF1A11622100DA46D7 /* Contracts */,
 				02116AD31A115F5700DA46D7 /* Controllers */,
@@ -303,6 +307,15 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		02116B181A1409AB00DA46D7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				02116B1C1A140A2400DA46D7 /* NSString+MCExtension.h */,
+				02116B1D1A140A2400DA46D7 /* NSString+MCExtension.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -419,6 +432,7 @@
 				02116AD11A115DEC00DA46D7 /* MCAlbum.m in Sources */,
 				02116AA81A115A6300DA46D7 /* main.m in Sources */,
 				02116AF71A1178D500DA46D7 /* MCDetailView.m in Sources */,
+				02116B1E1A140A2400DA46D7 /* NSString+MCExtension.m in Sources */,
 				02116AE61A11628200DA46D7 /* MCContentHandler.m in Sources */,
 				02116AD71A11601000DA46D7 /* MCTrackCell.m in Sources */,
 			);
@@ -617,6 +631,7 @@
 				02116ACA1A115A6400DA46D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		02116ACB1A115A6400DA46D7 /* Build configuration list for PBXNativeTarget "MCodeTestTests" */ = {
 			isa = XCConfigurationList;
@@ -625,6 +640,7 @@
 				02116ACD1A115A6400DA46D7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

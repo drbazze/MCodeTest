@@ -23,7 +23,7 @@
     self.price = [[data objectForKey:@"trackPrice"] floatValue];
     self.releaseDate = [data objectForKey:@"releaseDate"];
     self.currency = [data objectForKey:@"currency"];
-    self.previewUrl = [data objectForKey:@"previewUrl"];;
+    self.previewUrl = [data objectForKey:@"previewUrl"];
   }
   
   return self;

@@ -9,6 +9,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "Constants.h"
+#import "NSString+MCExtension.h"
 #import "MCContentHandler.h"
 #import "MCDetailView.h"
 
@@ -49,7 +50,10 @@
   artistNameLabel.text = _track.artistName;
   trackNameLabel.text = _track.trackName;
   albumNameLabel.text = _track.albumName;
-  releaseDate.text = [NSString stringWithFormat:@"%@",_track.releaseDate];
+  
+  NSDate *date = [_track.releaseDate getDateWithFormat:kiTunesDateFormat];
+  
+  releaseDate.text = [NSString stringWithFormat:@"Released: %@",[self dateToString:date]];
   
   if(_track.price <= 0)
   {
@@ -63,6 +67,17 @@
   [self addPlayer];
   
   [[MCContentHandler sharedClass] retrieveImage:_track.artWorkUrl ImageView:thumbnail animation:AnimationFade];
+}
+
+//------------------------------------------------//
+
+- (NSString *)dateToString:(NSDate *)date
+{
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setTimeZone:[NSTimeZone defaultTimeZone]];
+  [dateFormatter setDateFormat:@"yyyy MMMM dd"];
+  
+  return [dateFormatter stringFromDate:date];
 }
 
 //------------------------------------------------//
