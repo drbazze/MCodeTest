@@ -29,6 +29,7 @@
 		02116B151A11E33500DA46D7 /* icon-58~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B141A11E33500DA46D7 /* icon-58~iphone.png */; };
 		02116B171A11E38900DA46D7 /* icon-90@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 02116B161A11E38900DA46D7 /* icon-90@2x~iphone.png */; };
 		02116B1E1A140A2400DA46D7 /* NSString+MCExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 02116B1D1A140A2400DA46D7 /* NSString+MCExtension.m */; };
+		02116B211A14199800DA46D7 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02116B201A14199800DA46D7 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		02116B161A11E38900DA46D7 /* icon-90@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-90@2x~iphone.png"; sourceTree = "<group>"; };
 		02116B1C1A140A2400DA46D7 /* NSString+MCExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+MCExtension.h"; path = "Categories/NSString+MCExtension.h"; sourceTree = "<group>"; };
 		02116B1D1A140A2400DA46D7 /* NSString+MCExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MCExtension.m"; path = "Categories/NSString+MCExtension.m"; sourceTree = "<group>"; };
+		02116B201A14199800DA46D7 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Settings.bundle; path = Settings/Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				02116ACE1A115DC000DA46D7 /* Models */,
 				02116B061A11E0A000DA46D7 /* Resources */,
 				02116AE21A11623700DA46D7 /* Services */,
+				02116B1F1A14197A00DA46D7 /* Settings */,
 				02116AD41A115FE900DA46D7 /* Views */,
 			);
 			path = MCodeTest;
@@ -316,6 +319,14 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		02116B1F1A14197A00DA46D7 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				02116B201A14199800DA46D7 /* Settings.bundle */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -401,6 +412,7 @@
 				02116AF91A1178E400DA46D7 /* MCDetailView~iphone.xib in Resources */,
 				02116B0A1A11E0A000DA46D7 /* icon-60@2x~iphone.png in Resources */,
 				02116B0E1A11E1F900DA46D7 /* Default~iphone.png in Resources */,
+				02116B211A14199800DA46D7 /* Settings.bundle in Resources */,
 				02116AB41A115A6300DA46D7 /* Main.storyboard in Resources */,
 				02116AD91A11602700DA46D7 /* MCTrackCell~iphone.xib in Resources */,
 				02116B171A11E38900DA46D7 /* icon-90@2x~iphone.png in Resources */,

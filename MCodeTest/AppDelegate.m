@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MCContentHandler.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
+  
+  [self loadSettings];
+  
   return YES;
 }
 
@@ -31,6 +35,7 @@
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
+  [self updateSettings];
   // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
@@ -43,6 +48,64 @@
   // Saves changes in the application's managed object context before the application terminates.
   [self saveContext];
 }
+
+#pragma mark - Settings
+
+- (void)loadSettings
+{
+  NSURL *settingsBundleURL = [[NSBundle mainBundle] URLForResource:@"Settings" withExtension:@"bundle"];
+  NSMutableDictionary *appDefaults = [NSMutableDictionary dictionary];
+  
+  [self loadDefaults:appDefaults fromSettingsPage:@"Root.plist" inSettingsBundleAtURL:settingsBundleURL];
+  
+  [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+  [[NSUserDefaults standardUserDefaults] synchronize];
+  
+  /* If the settings changed while the app was closed */
+  [self updateSettings];
+}
+
+//------------------------------------------------//
+
+- (void)loadDefaults:(NSMutableDictionary*)appDefaults fromSettingsPage:(NSString*)plistName inSettingsBundleAtURL:(NSURL*)settingsBundleURL
+{
+  NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfURL:[settingsBundleURL URLByAppendingPathComponent:plistName]];
+  NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
+  
+  for (NSDictionary *prefItem in prefSpecifierArray)
+  {
+    NSString *prefItemType = prefItem[@"Type"];
+    NSString *prefItemKey = prefItem[@"Key"];
+    NSString *prefItemDefaultValue = prefItem[@"DefaultValue"];
+    
+    if ([prefItemType isEqualToString:@"PSChildPaneSpecifier"])
+    {
+      NSString *prefItemFile = prefItem[@"File"];
+      [self loadDefaults:appDefaults fromSettingsPage:prefItemFile inSettingsBundleAtURL:settingsBundleURL];
+    }
+    else if (prefItemKey != nil && prefItemDefaultValue != nil)
+    {
+      [appDefaults setObject:prefItemDefaultValue forKey:prefItemKey];
+    }
+  }
+}
+
+//------------------------------------------------//
+
+- (void)updateSettings
+{
+  [[NSUserDefaults standardUserDefaults] synchronize];
+  NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+  
+  if([userDefaults objectForKey:kSettingsAnimationKey])
+  {
+    NSLog(@"ANIM: %d",[[userDefaults objectForKey:kSettingsAnimationKey] intValue]);
+    
+    [[MCContentHandler sharedClass] setAnimation:[[userDefaults objectForKey:kSettingsAnimationKey] intValue]];
+  }
+}
+
+//------------------------------------------------//
 
 #pragma mark - Core Data stack
 

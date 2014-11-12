@@ -17,7 +17,6 @@
 
 static int minSearchPhraseLength = 3;
 static NSString *latestSearchPhrase = @"";
-static AnimationTypes defaultAnimation = AnimationSize;
 
 //------------------------------------------------//
 
@@ -165,7 +164,7 @@ static AnimationTypes defaultAnimation = AnimationSize;
   if(!show)
   {
     size = 0.1;
-    alpha = 1.0;
+    alpha = 0.0;
   }
   else
   {
@@ -285,7 +284,7 @@ static AnimationTypes defaultAnimation = AnimationSize;
 {
   MCAlbum *album = [_albumsCollection objectAtIndex:indexPath.row];
   
-  [self showDetail:album show:YES animation:defaultAnimation];
+  [self showDetail:album show:YES animation:[[MCContentHandler sharedClass] animation]];
 }
 
 //------------------------------------------------//
@@ -440,7 +439,7 @@ static AnimationTypes defaultAnimation = AnimationSize;
   {
     if(_detailContentView.bindClose)
     {
-      [self showDetail:nil show:NO animation:defaultAnimation];
+      [self showDetail:nil show:NO animation:[[MCContentHandler sharedClass] animation]];
     }
   }
 }

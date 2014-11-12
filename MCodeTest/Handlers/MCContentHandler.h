@@ -19,6 +19,7 @@ typedef void(^SearchResultBlock)(ResponseTypes ResponseType, NSArray *TracksColl
 @interface MCContentHandler : NSObject <NSURLConnectionDelegate,UIAlertViewDelegate>
 
 @property(nonatomic,assign) BOOL bindRetry;
+@property(nonatomic,assign) AnimationTypes animation;
 
 + (id)sharedClass;
 
