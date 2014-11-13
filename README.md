@@ -8,6 +8,7 @@ Key features:
 - Playable tracks
 - Variable animations through phone settings (settings bundle)
 - Alerts for network events
+- Unit tests
 
 Strategy:
 - MVC with little KVO
@@ -20,4 +21,5 @@ Further development opportunities:
 - Core data result saves for offline mode
 - Orderable results
 - More customizations through settings
+- More unit tests
 - Universal app
